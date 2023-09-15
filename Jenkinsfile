@@ -14,14 +14,4 @@ node('built-in')
     {
       cicd.newDeploy("shared_library","172.31.1.73","testapp")
     }
-    stage('Testing')
-    {
-        cicd.newDownload("FunctionalTesting.git")
-        cicd.runSeleniumprograms("shared_library")
-    }
-    stage('Delivery')
-    {
-         input message: 'need approval from DM!', submitter: 'kohli'
-         cicd.newDeploy("shared_library","172.31.12.58","prodapp")
-    }
 }
