@@ -2,16 +2,16 @@
 
 node('built-in')
 {
-    stage('Download_loans')
+    stage('Download')
     {
       cicd.newDownload("maven.git")  
     }
-    stage('Build_loans')
+    stage('Build')
     {
       cicd.newBuild()
     }
-    stage('Deploy_loans')
+    stage('Download')
     {
-      cicd.newDeploy("shared_library","172.31.1.73","testapp")
+      cicd.newDeploy("shared_librarywithscriptedpipeline","172.31.27.196","testapp")
     }
 }
