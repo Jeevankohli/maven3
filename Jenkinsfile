@@ -2,26 +2,25 @@
 
 node('built-in')
 {
-    stage('Download_master')
+    stage('Download')
     {
       cicd.newDownload("maven.git")  
     }
-    stage('Build_master')
+    stage('Build')
     {
       cicd.newBuild()
     }
     stage('Download')
     {
-      cicd.newDeploy("shared_library","172.31.1.73","testapp")
+      cicd.newDeploy("shared_librarywithscriptedpipeline","172.31.27.196","testapp")
     }
     stage('Testing')
     {
         cicd.newDownload("FunctionalTesting.git")
-        cicd.runSeleniumprograms("shared_library")
+        cicd.runseleniumprograms("shared_librarywithscriptedpipeline")
     }
     stage('Delivery')
     {
-         input message: 'need approval from DM!', submitter: 'kohli'
-         cicd.newDeploy("shared_library","172.31.12.58","prodapp")
+         cicd.newDeploy("shared_librarywithscriptedpipeline","172.31.18.96","prodapp")
     }
 }
